@@ -17,7 +17,6 @@ backend/.env
 
 # Database
 *.db
-database/electronics_clean.csv
 database/scratch/
 
 # Backup / raw data
