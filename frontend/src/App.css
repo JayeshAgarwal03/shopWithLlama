@@ -1,0 +1,654 @@
+/* ============================================================
+   FONTS
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   DESIGN TOKENS
+   These are CSS variables — like constants in Java.
+   Define once here, use everywhere below.
+   Change --accent here and the whole app updates.
+   ============================================================ */
+:root {
+  --bg:           #0f0f11;
+  --bg-card:      #18181c;
+  --bg-surface:   #1e1e24;
+  --border:       #2a2a32;
+  --border-hover: #444450;
+  --accent:       #f5a623;
+  --text-primary:   #f0ede8;
+  --text-secondary: #8c8a97;
+  --text-muted:     #55535f;
+  --danger:       #e05252;
+  --radius-sm:    6px;
+  --radius-md:    12px;
+  --radius-lg:    20px;
+  --font: 'Inter', sans-serif;
+}
+
+/* ============================================================
+   RESET
+   Browsers apply default margin/padding to elements.
+   We zero everything out and control it ourselves.
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font);
+}
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 0;
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  font-size: 1.3rem;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.3px;
+}
+
+.header-tagline {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   CHAT PLACEHOLDER — full width hero section
+   This is where the LangGraph agent widget will live in Phase 5.
+   For now it's a hollow outlined box with a dashed border.
+   ============================================================ */
+.chat-placeholder {
+  width: 100%;
+  height: 42vh;
+  min-height: 280px;
+  border: 2px dashed var(--border-hover);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: transparent;
+}
+
+.chat-placeholder-icon {
+  font-size: 2.5rem;
+  opacity: 0.3;
+}
+
+.chat-placeholder-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.chat-placeholder-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* ============================================================
+   CONTROLS BAR — sticky, stays visible while scrolling
+   position: sticky + top: 0 means it sticks to the top
+   of the viewport once the user scrolls past the chat section.
+   z-index: 10 keeps it above the product cards.
+   ============================================================ */
+.controls-bar {
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 0.875rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.controls-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0.875rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-group {
+  display: flex;
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-right: none;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-btn {
+  padding: 0.6rem 1.1rem;
+  background-color: var(--accent);
+  color: #0f0f11;
+  border: none;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.15s;
+}
+
+.search-btn:hover {
+  background-color: #e09614;
+}
+
+.category-select {
+  padding: 0.6rem 1rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-family: var(--font);
+  outline: none;
+  cursor: pointer;
+  min-width: 160px;
+  transition: border-color 0.15s;
+}
+
+.category-select:focus {
+  border-color: var(--accent);
+}
+
+/* ============================================================
+   RESULTS BAR
+   ============================================================ */
+.results-bar {
+  padding: 0.6rem 0;
+}
+
+.results-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.results-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.main-content {
+  flex: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 2rem 3rem;
+}
+
+/* ============================================================
+   PRODUCT GRID
+   auto-fill: create as many columns as fit
+   minmax(220px, 1fr): each column is at least 220px,
+   grows equally to fill remaining space
+   ============================================================ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ============================================================
+   PRODUCT CARD
+   ============================================================ */
+.product-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.1);
+}
+
+.card-image-wrap {
+  background-color: #ffffff;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.card-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.product-card:hover .card-image-wrap img {
+  transform: scale(1.04);
+}
+
+.card-body {
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.card-name {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  line-height: 1.45;
+  /* Clamp to 2 lines — prevents tall cards for long names */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 0.2rem;
+}
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.stars {
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.rating-value {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.card-category {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: auto;
+  padding-top: 0.4rem;
+}
+
+/* ============================================================
+   STATE SCREENS (loading / error / empty)
+   ============================================================ */
+.state-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  gap: 1rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.state-screen.error {
+  color: var(--danger);
+}
+
+.state-screen .hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Spinner animation */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.page-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.page-num {
+  min-width: 34px;
+  height: 34px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  transition: border-color 0.15s, color 0.15s, background-color 0.15s;
+}
+
+.page-num:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.page-num.active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #0f0f11;
+  font-weight: 700;
+}
+
+.page-ellipsis {
+  color: var(--text-muted);
+  padding: 0 0.2rem;
+  font-size: 0.82rem;
+}
+
+/* ============================================================
+   PRODUCT DETAIL OVERLAY
+   position: fixed means it covers the entire viewport
+   regardless of scroll position.
+   inset: 0 is shorthand for top/right/bottom/left all = 0
+   ============================================================ */
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.detail-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 860px;
+  padding: 2rem;
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.back-btn {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.875rem;
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.back-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.detail-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.detail-image-wrap {
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-image-wrap img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.detail-category {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.detail-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.detail-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.detail-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.detail-meta-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.meta-label {
+  color: var(--text-muted);
+}
+
+.meta-value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.buy-btn {
+  margin-top: 0.5rem;
+  padding: 0.8rem 2rem;
+  background-color: var(--accent);
+  color: #0f0f11;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.buy-btn:hover {
+  background-color: #e09614;
+  transform: translateY(-1px);
+}
+
+.buy-btn:active {
+  transform: translateY(0);
+}
+
+.state-msg {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.state-msg.error {
+  color: var(--danger);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================================
+   RESPONSIVE — narrow screens
+   Below 600px, stack the detail view and shrink the grid
+   ============================================================ */
+@media (max-width: 600px) {
+  .detail-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .controls-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .category-select {
+    width: 100%;
+  }
+}

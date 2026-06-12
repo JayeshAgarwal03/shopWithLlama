@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Personal notes
+challanges.txt
+clean_data.ipynb
+
+# Virtual environment
+shopvenv/
+
+# Environment variables
+backend/.env
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Database
+*.db
+database/electronics_clean.csv
+database/scratch/
+
+# Backup / raw data
+backup_data/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# macOS
+.DS_Store
