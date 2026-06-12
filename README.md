@@ -1,6 +1,6 @@
-# 🛒 shopWithLlama
+# shopWithLlama
 
-An AI-powered electronics web app — featuring a conversational shopping assistant that understands natural language queries and orchestrates tool calls to search products, filter by category, and guide users through checkout.
+An AI-powered shopping web app — featuring a conversational shopping assistant that understands natural language queries and orchestrates tool calls to search products, filter by category, and guide users through checkout.
 
 ---
 
