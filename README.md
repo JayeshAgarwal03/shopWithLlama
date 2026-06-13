@@ -10,6 +10,8 @@ An AI-powered shopping web app — featuring a conversational shopping assistant
 **SQLite** (local) 
 Raw SQL with a normalized 2-table schema (`categories`, `products`) seeded with ~2,000 real Amazon India electronics listings including live image URLs.
 
+Dataset used: [Amazon Electronics Products 10k items - 2023](https://www.kaggle.com/datasets/akeshkumarhp/electronics-products-amazon-10k-items)
+
 ### Backend
 **Python + FastAPI**  
 REST API with endpoints for product listing (pagination, search, category filtering), individual product detail, and category browsing. CORS-enabled for local frontend development.
